@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+
 public class ArrayList<E> implements List<E> {
 	//처음 만들때 사이즈
 	private static final int INIT_CAPACITY=3; 
@@ -90,4 +92,22 @@ public class ArrayList<E> implements List<E> {
 		return size;
 	}
 
+	@Override
+	public Object[] toArray() {
+		Object[] arr = new Object[ size ];
+		for( int i = 0; i < size; i++ ) {
+			arr[ i ] = data[ i ];
+		}
+		
+		return arr;
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
+

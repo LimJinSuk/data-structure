@@ -48,9 +48,10 @@ public class LinkedListTest {
 		
 		//remove test
 				
-		System.out.println("삭제 항목 : "+list.remove(0));
+		System.out.println("삭제 항목 : "+list.remove(6));
+		list.add(77);
+		System.out.println("추가 항목 : "+list.get(6));
 		//System.out.println("삭제 항목 : "+list.remove(4));
-		System.out.println("삭제 항목 : "+list.remove(4));
 		
 		count=list.size();
 		System.out.println("list 크기 : "+count);

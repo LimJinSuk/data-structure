@@ -1,6 +1,8 @@
 package list;
 
-public interface List<E> {
+import java.util.Iterator;
+
+public interface List<E> {//인터페이스 간의 상속
 	//insert 연산
 	void add( E element );
     void add( int index, E element );
@@ -12,5 +14,7 @@ public interface List<E> {
     void removeAll();	
     
     int size();
-
+    
+    Object[] toArray();
+    Iterator<E> iterator();
 }

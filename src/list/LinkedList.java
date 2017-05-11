@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+
 public class LinkedList<E> implements List<E> {
 	
 	private Node<E> head=null;
@@ -86,7 +88,7 @@ public class LinkedList<E> implements List<E> {
 					tail=tail.next;
 				temp=tail.next;
 				tail.next.next=null;
-				tail.next.data=null;
+				//tail.next.data=null;
 				size--;
 			}
 			//중간 노드 삭제
@@ -123,6 +125,20 @@ public class LinkedList<E> implements List<E> {
 		return size;
 	}
 	
+
+	@Override
+	public Object[] toArray() {
+		Object[] arr = new Object[ size ];
+		
+		Node<E> x = head;
+		int index = 0;
+		while( x != null ) {
+			arr[ index++ ] = x.data;
+			x = x.next;
+		}		
+		return arr;
+	}
+	
 	//리스트 내부에서만 쓰기 때문에 내부클래스로 지정
 	private static class Node<E> {
 		
@@ -139,5 +155,12 @@ public class LinkedList<E> implements List<E> {
 	        this.next = next;
 	    }
 	 }
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

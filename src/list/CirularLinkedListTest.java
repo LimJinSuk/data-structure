@@ -1,12 +1,11 @@
 package list;
 
-import java.util.Arrays;
+import java.util.Iterator;
 
-public class ArrayListTest {
+public class CirularLinkedListTest {
 
 	public static void main(String[] args) {
-
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new CircularLinkedList<Integer>();
 		
 		//add 연산
 		list.add(11);
@@ -26,13 +25,12 @@ public class ArrayListTest {
 		for(int i=0; i<count; i++)
 			System.out.println(i+"번째 항목 : "+list.get(i));
 		
-		
-		System.out.println("-----------------------");
-		
+		System.out.println("--------------------------");
 		//removeAll 테스트
 		list.removeAll();
-		System.out.println(Arrays.toString(list.toArray()));
+		//list.add(2,00);
 		
+		//add
 		list.add(33);
 		list.add(44);
 		list.add(55);
@@ -40,33 +38,39 @@ public class ArrayListTest {
 		list.add(77);
 	
 		list.add(0,11);	
-		list.add(6,00);
-		
-		count=list.size();
-		System.out.println("list 크기 : "+count);
-		for(int i=0; i<count; i++)
-			System.out.println(i+"번째 항목 : "+list.get(i));
-		
-		System.out.println("-----------------------");
-		
-		System.out.println("삭제 항목 : "+list.remove(0));
-		System.out.println("삭제 항목 : "+list.remove(2));
-		
-		count=list.size();
-		System.out.println("list 크기 : "+count);
-		for(int i=0; i<count; i++)
-			System.out.println(i+"번째 항목 : "+list.get(i));
-		
-		//foreach문을 사용하기 위한 컬렉션 객체는
-		//java.lang.iterable 인터페이스를 구해야 한다
-		//for(in ti=0; i<count; i++)
-		// 		System.out.println();
-		
-		
-		//Iterator 반복자를 통한 리스트 순회
+		list.add(2,00);
 				
+		count=list.size();
+		System.out.println("list 크기 : "+count);
+		for(int i=0; i<count; i++)
+			System.out.println(i+"번째 항목 : "+list.get(i));
 		
 		
+		System.out.println("--------------------------");
+		
+		//remove test
+				
+		System.out.println("삭제 항목 : "+list.remove(6));
+		//list.add(77);
+		//System.out.println("추가 항목 : "+list.get(6));
+		//System.out.println("삭제 항목 : "+list.remove(4));
+		
+		count=list.size();
+		System.out.println("list 크기 : "+count);
+		
+		for(int i=0; i<count; i++)
+			System.out.println(i+"번째 항목 : "+list.get(i));
+		
+		System.out.println("-----------탐색------------");
+		
+		Iterator<Integer> it = list.iterator();
+		while (it.hasNext()) {
+			int i = it.next(); // auto unboxing
+			System.out.print(i + "\t");
+		}
+		System.out.print("\n");
+		
+		System.out.println("-----예외 테스트------");
 		//예외 테스트
 		try{
 			System.out.println(list.get(0));
