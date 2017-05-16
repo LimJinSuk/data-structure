@@ -1,4 +1,4 @@
-package list;
+package stack;
 
 import java.util.Iterator;
 
@@ -77,10 +77,10 @@ public class DoublyLinkedList<E> implements List<E> {
 		E data = null;
 		
 		if( 0 == index ) {  // head 삭제
-			data = head.data;			
+			data = head.data;
+			head.next.prev=null;
+			
 			head = head.next;
-			if(head!=null)
-				head.prev=null;
 		} 
 		else { // 중간 또는 tail 삭제
 			

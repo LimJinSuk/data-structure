@@ -1,8 +1,8 @@
-package list;
+package queue;
 
 import java.util.Iterator;
 
-public class DoublyLinkedList<E> implements List<E> {
+public class DoublyLinkedList<E> implements List<E>,Queue<E> {
 	
 	private int size=0;
 	private Node<E> head=null;
@@ -77,10 +77,10 @@ public class DoublyLinkedList<E> implements List<E> {
 		E data = null;
 		
 		if( 0 == index ) {  // head 삭제
-			data = head.data;			
+			data = head.data;
+			head.next.prev=null;
+			
 			head = head.next;
-			if(head!=null)
-				head.prev=null;
 		} 
 		else { // 중간 또는 tail 삭제
 			
@@ -155,6 +155,32 @@ public class DoublyLinkedList<E> implements List<E> {
 				return data;
 			}
 		};
+	}
+	
+	@Override
+	public void offer(E item) {
+		add(item);
+	}
+
+	@Override
+	public E poll() {
+		if(head==null)
+			return null;
+		E data = head.data;
+		//head.next.prev=null;
+		head = head.next;
+		if(head!=null)
+			head.prev=null;
+		
+		return data;
+	}
+
+	@Override
+	public E peek() {
+		if(head==null)
+			return null;
+		
+		return head.data;
 	}
 	
 private static class Node<E> {
